@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Cantinho!</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="card">
+        
+        <section class="content-section">
+            
+            <div class="text-column">
+                <h1 class="title">
+                    Ajude a mobiliar o nosso cantinho
+                </h1>
+                <h1 class="title1">
+                    (e salvar o Jardel das broncas!) 💸😂
+                </h1>
+                <ul>
+                    A gente tá montando nosso lar com muito carinho e como todo casal que tá começando, tem alguns sonhos que ainda precisam de uma forcinha 💛
+                </ul>
+                <ul>
+                    Você selecionou um dos itens que vamos comprar com a ajuda de vocês! 
+                </ul>
+                <ul class="highlight-text">
+                    💰 Você pode contribuir com qualquer valor, o importante é o carinho, afinal cada ajuda, pequena ou grande, faz parte desse sonho!
+                </ul>
+            </div>
+            
+            <div class="image-column">
+                <img src="nossafoto.png" 
+                     alt="Foto do Casal" 
+                     class="profile-photo">
+            </div>
+
+        </section>
+        
+        <div class="divider"></div>
+
+        <section class="content-section">
+
+            <div class="text-column">
+                <h2 class="subtitle">Assim que fizer o PIX, você pode:</h2>
+                
+                <ul class="task-list">
+                    Levar um bilhetinho engraçado ou carinhoso no dia do chá, a Duda adora chorar lendo bilhetinhos ☕
+                </ul>
+                <ul class="task-list">
+                    Ou você pode levar uma caixa da zoeira no dia: como uma caixa vazia, uma caixa com meia suja, um pacote com uma fruta, o que sua criatividade mandar hehe
+                </ul>
+            </div>
+
+            <div class="image-column pix-image-column">
+                <div class="pix-info">
+                    <p class="pix-label">Nossa chave PIX:</p>
+                    
+                    <div class="pix-key-copy-box" onclick="copyPixKey(this, '00020126580014BR.GOV.BCB.PIX01367f6e78bb-7bf7-49d2-a9ac-18989116a99c5204000053039865802BR5922Jardel Jacoby Fagundes6009SAO PAULO621405104TyMIZoxqz630401DE')">
+                        Clique para copiar o PIX (Copia e Cola)
+                    </div>
+                
+                </div>
+
+                <img src="qrcodepix.jpg" 
+                     alt="QR Code PIX" 
+                     class="qr-code">
+            </div>
+
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="final-message-section">
+            <p>
+                Toda ajuda faz diferença pra gente construir esse novo capítulo com muito amor.
+            </p>
+            <p class="signature">
+                Com carinho, Eduarda & Jardel
+            </p>
+        </section>
+    </main>
+
+    <script>
+        /**
+         * A função DEVE aceitar dois argumentos: 
+         * 1. element (para o feedback visual)
+         * 2. pixKey (a chave secreta a ser copiada)
+         */
+        function copyPixKey(element, pixKey) {
+            // 1. Pega o texto original do botão (ex: "clique aqui...")
+            const originalText = element.innerText;
+
+            // 2. Cria uma área de texto temporária
+            const tempTextArea = document.createElement('textarea');
+            
+            // 3. Usa a CHAVE SECRETA (pixKey), e não o texto do elemento
+            tempTextArea.value = pixKey; 
+            
+            // 4. Esconde o elemento
+            tempTextArea.style.position = 'fixed';
+            tempTextArea.style.left = '-9999px';
+            tempTextArea.style.top = '0';
+            
+            // 5. Adiciona ao corpo do documento
+            document.body.appendChild(tempTextArea);
+            
+            // 6. Seleciona o texto dentro dele
+            tempTextArea.select();
+            tempTextArea.setSelectionRange(0, 99999); 
+
+            try {
+                // 7. Executa o comando "copiar"
+                document.execCommand('copy');
+                
+                // 8. Feedback visual
+                element.innerText = 'Copiado!';
+                element.style.backgroundColor = '#15803D'; 
+                element.style.color = '#FFFFFF';
+                
+                // 9. Reverte ao normal após 2 segundos
+                setTimeout(() => {
+                    element.innerText = originalText; // Restaura o texto original
+                    element.style.backgroundColor = ''; 
+                    element.style.color = ''; 
+                }, 2000);
+                
+            } catch (err) {
+                // 10. Feedback em caso de erro
+                console.error('Falha ao copiar: ', err);
+                element.innerText = 'Erro ao copiar';
+                setTimeout(() => { element.innerText = originalText; }, 2000);
+            }
+            
+            // 11. Remove o elemento temporário
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+
+</body>
+</html>
